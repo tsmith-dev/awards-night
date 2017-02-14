@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :nominees
+  resources :categories
+  resources :shows
   resources :games
   resources :users
   
