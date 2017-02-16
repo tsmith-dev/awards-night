@@ -1,4 +1,4 @@
 class Show < ApplicationRecord
-  has_many :categories
-  has_many :nominees
+  has_many :nominations
+  has_many :categories, through: :nominations
 end

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  resources :nominees
+  resources :nominations
   resources :categories
   resources :shows
   resources :games
   resources :users
+  controller :users do
+    get 'dashboard' => :dashboard, as: 'dashboard'
+  end
   
   controller :sessions do
     get 'login' => :new

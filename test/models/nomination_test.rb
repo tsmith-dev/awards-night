@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class NomineeTest < ActiveSupport::TestCase
+class NominationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

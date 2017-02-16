@@ -1,0 +1,13 @@
+<h1>2017 Academy Awards</h1>
+
+<h2>Make your selection for...</h2>
+
+<%= params %>
+
+<%= form_tag do %>
+  <%= form_tag({controller: "users", action: "dashboard"}, method: "get") %>
+<%= submit_tag 'Go' %>
+<% end %>
+
+<%= render 'picks' %>
+

@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  has_many :nominees
+  has_many :nominations
   has_many :shows
 end

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user
       session[:email] = params[:email]
-      redirect_to user_path(@user)
+      redirect_to dashboard_path(@user)
     else
       redirect_to login_path, notice: "Email/Password Invalid. Sign up instead?"
     end
