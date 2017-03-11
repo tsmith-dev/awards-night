@@ -60,8 +60,10 @@ class UsersController < ApplicationController
   end
   
   def dashboard
-    @show = Show.first # fix
-    @categories = Category.all
+    if @current_user.nil?
+      redirect_to login_url
+    end
+    @awards = Show.first.awards
   end
 
   private

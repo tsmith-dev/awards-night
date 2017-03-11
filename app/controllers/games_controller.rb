@@ -60,6 +60,9 @@ class GamesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def rules
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -69,6 +72,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name)
+      params.require(:game).permit(:name,:show_id)
     end
 end

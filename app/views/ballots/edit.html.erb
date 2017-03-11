@@ -1,0 +1,38 @@
+<%= form_for(@ballot) do |f| %>
+  <% if @ballot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ballot.errors.count, "error") %> prohibited this ballot from being saved:</h2>
+
+      <ul>
+      <% @ballot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+        <%= f.fields_for(:picks) do |ff| %>
+        
+          <h2><%= ff.object.award.category.name %></h2>
+          
+          <div class="field">
+            <%= ff.label :first_pick, "First Pick: 3 points" %>
+            <%= ff.collection_select(:first_pick, ff.object.award.nominations, :id, :nominee) %>
+          </div>
+          <div class="field">
+            <%= ff.label :second_pick, "Second Pick: 2 points" %>
+            <%= ff.collection_select(:second_pick, ff.object.award.nominations, :id, :nominee) %>
+          </div>
+          <div class="field">
+            <%= ff.label :third_pick, "Third Pick: 1 point" %>
+            <%= ff.collection_select(:third_pick, ff.object.award.nominations, :id, :nominee) %>
+          </div>
+
+        <% end %>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+

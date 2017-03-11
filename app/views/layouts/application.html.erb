@@ -9,10 +9,12 @@
 <body>
 <%= flash[:notice] unless nil? %>
 
+<h1><%= Show.first.name %></h1> <!-- fix -->
+
 <%= yield %>
 
   <% if session[:email] %>
-    <%= button_to 'Logout', logout_path, method: :delete %>
+    <%= button_to "Logout #{@current_user.fname}", logout_path, method: :delete %>
   <% end %>
 </body>
 </html>

@@ -15,6 +15,7 @@ class NominationsController < ApplicationController
   # GET /nominations/new
   def new
     @nomination = Nomination.new
+    @show = Show.first #fix to current_show
   end
 
   # GET /nominations/1/edit

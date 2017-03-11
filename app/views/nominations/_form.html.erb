@@ -12,13 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :show_id %>
-    <%= f.collection_select(:show_id, Show.all, :id, :name) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :category_id %>
-    <%= f.collection_select(:category_id, Category.all, :id, :name) %>
+    <%= f.label :show_category_id %>
+    <%= f.collection_select(:show_category_id, @show.categories, :show_category_id, :name) %>
   </div>
 
   <div class="field">

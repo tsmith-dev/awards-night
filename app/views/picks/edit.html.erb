@@ -1,0 +1,32 @@
+<h1>2017 Academy Awards Ballot</h1>
+
+<%= link_to 'Rules', rules_path %>
+
+
+<%= form_tag picks_path, :method => :put do %>
+  <% @picks.each do |pick| %>
+    <%= fields_for "picks[]", pick do |p| %>
+
+      <h2><%= pick.award.category.name %></h2>
+      
+      <div class="field">
+        <%= p.label :first_pick, "First Pick: 3 points" %>
+        <%= p.collection_select(:first_pick, pick.award.nominations, :id, :nominee) %>
+      </div>
+      <div class="field">
+        <%= p.label :second_pick, "Second Pick: 2 points" %>
+        <%= p.collection_select(:second_pick, pick.award.nominations, :id, :nominee) %>
+      </div>
+      <div class="field">
+        <%= p.label :third_pick, "Third Pick: 1 point" %>
+        <%= p.collection_select(:third_pick, pick.award.nominations, :id, :nominee) %>
+      </div>
+
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= submit_tag "Update Ballot" %>
+  </div>
+<% end %>
+
+  

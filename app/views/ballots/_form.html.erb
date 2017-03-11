@@ -1,0 +1,45 @@
+<%= form_for(ballot) do |f| %>
+  <% if ballot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ballot.errors.count, "error") %> prohibited this ballot from being saved:</h2>
+
+      <ul>
+      <% ballot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+    <%= f.hidden_field :user_id, value: @current_user.id %>
+    <%= f.hidden_field :game_id, value: @current_game.id %>
+
+      <% @awards.each do |a| %>
+        <%= f.fields_for :picks, ballot.picks.build do |p| %>
+          <%= p.hidden_field :award_id, value: a.id %>
+        
+          <h2><%= a.category.name %></h2>
+          
+          <div class="field">
+            <%= p.label :first_pick, "First Pick: 3 points" %>
+            <%= p.collection_select(:first_pick, a.nominations, :id, :nominee,
+                                                          prompt: "Select") %>
+          </div>
+          <div class="field">
+            <%= p.label :second_pick, "Second Pick: 2 points" %>
+            <%= p.collection_select(:second_pick, a.nominations, :id, :nominee,
+                                                          prompt: "Select") %>
+          </div>
+          <div class="field">
+            <%= p.label :third_pick, "Third Pick: 1 point" %>
+            <%= p.collection_select(:third_pick, a.nominations, :id, :nominee,
+                                                          prompt: "Select") %>
+          </div>
+
+        <% end %>
+      <% end %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

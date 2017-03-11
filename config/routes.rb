@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
+  resources :ballots
+  resources :awards
+  get 'picks/edit', to: 'picks#edit', as: 'edit_picks'
+  put 'picks', to: 'picks#update'
+  resources :picks
   resources :nominations
   resources :categories
   resources :shows
   resources :games
   resources :users
-  controller :users do
-    get 'dashboard' => :dashboard, as: 'dashboard'
-  end
-  
+
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -17,12 +19,15 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  get 'dashboard/:id', to: 'users#dashboard', as: 'dashboard'
+  
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
-
+  root 'users#dashboard'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+  get 'rules' => 'welcome#rules'
+  
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

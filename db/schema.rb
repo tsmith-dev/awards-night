@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216180949) do
+ActiveRecord::Schema.define(version: 20170303190513) do
+
+  create_table "awards", force: :cascade do |t|
+    t.integer  "show_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_awards_on_category_id"
+    t.index ["show_id"], name: "index_awards_on_show_id"
+  end
+
+  create_table "ballots", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_ballots_on_game_id"
+    t.index ["user_id"], name: "index_ballots_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -20,18 +38,30 @@ ActiveRecord::Schema.define(version: 20170216180949) do
 
   create_table "games", force: :cascade do |t|
     t.string   "name"
+    t.integer  "show_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["show_id"], name: "index_games_on_show_id"
   end
 
   create_table "nominations", force: :cascade do |t|
-    t.integer  "show_id"
-    t.integer  "category_id"
+    t.integer  "award_id"
     t.string   "nominee"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["award_id"], name: "index_nominations_on_award_id"
+  end
+
+  create_table "picks", force: :cascade do |t|
+    t.integer  "ballot_id"
+    t.integer  "award_id"
+    t.integer  "first_pick"
+    t.integer  "second_pick"
+    t.integer  "third_pick"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_nominations_on_category_id"
-    t.index ["show_id"], name: "index_nominations_on_show_id"
+    t.index ["award_id"], name: "index_picks_on_award_id"
+    t.index ["ballot_id"], name: "index_picks_on_ballot_id"
   end
 
   create_table "shows", force: :cascade do |t|
