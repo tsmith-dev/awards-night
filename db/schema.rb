@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303190513) do
+ActiveRecord::Schema.define(version: 20170302203906) do
 
   create_table "awards", force: :cascade do |t|
     t.integer  "show_id"
@@ -55,11 +55,11 @@ ActiveRecord::Schema.define(version: 20170303190513) do
   create_table "picks", force: :cascade do |t|
     t.integer  "ballot_id"
     t.integer  "award_id"
-    t.integer  "first_pick"
-    t.integer  "second_pick"
-    t.integer  "third_pick"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "first_pick_id"
+    t.integer  "second_pick_id"
+    t.integer  "third_pick_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["award_id"], name: "index_picks_on_award_id"
     t.index ["ballot_id"], name: "index_picks_on_ballot_id"
   end
@@ -74,9 +74,9 @@ ActiveRecord::Schema.define(version: 20170303190513) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.string   "fname"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "fname"
   end
 
 end

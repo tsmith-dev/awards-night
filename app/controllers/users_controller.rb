@@ -63,7 +63,10 @@ class UsersController < ApplicationController
     if @current_user.nil?
       redirect_to login_url
     end
-    @awards = Show.first.awards
+    if @current_user.ballot.nil?
+      redirect_to new_ballot_url
+    end
+    @awards = @current_show.awards
   end
 
   private

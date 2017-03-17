@@ -35,7 +35,7 @@ class BallotsController < ApplicationController
   end
 
   def update
-    if @ballot.update(ballot_params)
+    if @ballot.update_attributes(ballot_params)
       redirect_to @ballot, notice: 'Ballot updated.'
     else
       render :edit
@@ -60,7 +60,7 @@ class BallotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ballot_params
-      params.require(:ballot).permit(:game_id, :user_id, picks_attributes: [:id, :award_id, :first_pick, :second_pick, :third_pick])
+      params.require(:ballot).permit(:game_id, :user_id, picks_attributes: [:id, :award_id, :first_pick_id, :second_pick_id, :third_pick_id])
     end
     
 end

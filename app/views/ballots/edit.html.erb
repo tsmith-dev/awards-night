@@ -17,15 +17,15 @@
           
           <div class="field">
             <%= ff.label :first_pick, "First Pick: 3 points" %>
-            <%= ff.collection_select(:first_pick, ff.object.award.nominations, :id, :nominee) %>
+            <%= ff.collection_select(:first_pick_id, ff.object.award.nominations, :id, :nominee) %>
           </div>
           <div class="field">
             <%= ff.label :second_pick, "Second Pick: 2 points" %>
-            <%= ff.collection_select(:second_pick, ff.object.award.nominations, :id, :nominee) %>
+            <%= ff.collection_select(:second_pick_id, ff.object.award.nominations, :id, :nominee) %>
           </div>
           <div class="field">
             <%= ff.label :third_pick, "Third Pick: 1 point" %>
-            <%= ff.collection_select(:third_pick, ff.object.award.nominations, :id, :nominee) %>
+            <%= ff.collection_select(:third_pick_id, ff.object.award.nominations, :id, :nominee) %>
           </div>
 
         <% end %>

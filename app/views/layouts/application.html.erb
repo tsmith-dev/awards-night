@@ -9,7 +9,8 @@
 <body>
 <%= flash[:notice] unless nil? %>
 
-<h1><%= Show.first.name %></h1> <!-- fix -->
+<h3><%= @current_game.name %></h3>
+<h1><%= @current_game.show.name %></h1>
 
 <%= yield %>
 
