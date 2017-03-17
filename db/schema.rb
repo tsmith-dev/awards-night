@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170302203906) do
   create_table "awards", force: :cascade do |t|
     t.integer  "show_id"
     t.integer  "category_id"
+    t.integer  "winner_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["category_id"], name: "index_awards_on_category_id"

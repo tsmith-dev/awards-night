@@ -2,11 +2,14 @@
 
 <% @current_user.ballot.picks.each do |pick| %>
 
-  <%= pick.award.category.name %></br>
-  <%= pick.first_pick.nominee %></br>
-  <%= pick.second_pick.nominee %></br>
-  <%= pick.third_pick.nominee %></br>
+  <h3><%= pick.award.category.name %></h3>
+    <%= pick.first_pick.nominee %> (3 pts)</br>
+    <%= pick.second_pick.nominee %> (2 pts)</br>
+    <%= pick.third_pick.nominee %> (1 pt)</br>
   
-  <% end %>
-  
+<% end %>
+
+<p>You currently have <%=@current_user.total_points%> points.</p>
+<p>You are in blank place out of blank players.</p>
+
 <%= link_to 'Edit Picks', edit_ballot_path(@current_user.ballot) %>
