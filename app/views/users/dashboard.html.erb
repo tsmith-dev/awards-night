@@ -10,6 +10,6 @@
 <% end %>
 
 <p>You currently have <%=@current_user.total_points%> points.</p>
-<p>You are in blank place out of blank players.</p>
+<p>You are in <%= User.count.ordinalize %> place out of <%= User.count %> player(s).</p>
 
 <%= link_to 'Edit Picks', edit_ballot_path(@current_user.ballot) %>
