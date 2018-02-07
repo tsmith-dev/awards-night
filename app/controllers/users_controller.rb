@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if params[:search]
+      @users = User.where(email:params[:search]) || User.all
+    else
+      @users = User.all
+    end
   end
 
   # GET /users/1
@@ -62,6 +66,7 @@ class UsersController < ApplicationController
   def dashboard
     if @current_user.nil?
       redirect_to login_url
+      return
     end
     if @current_user.ballot.nil?
       redirect_to new_ballot_url

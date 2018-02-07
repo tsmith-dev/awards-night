@@ -1,5 +1,11 @@
 <h1>Users</h1>
 
+<%= params.inspect %>
+<%= form_tag(users_path, :method => 'GET') do %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search" %>
+<% end %>
+
 <table>
   <thead>
     <tr>
